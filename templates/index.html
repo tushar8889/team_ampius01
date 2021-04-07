@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>GeoJson Experiments</title>
+
+    <!-- CSS for MapBox -->
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+    <!-- Javascript for MapBox -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+
+    <style>
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var geojson =
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [125.6, 10.1]
+          },
+          "properties": {
+            "name": "Dinagat Islands"
+          }
+        };
+      var map = L.mapbox.map('map', 'sk.eyJ1IjoidHVzaGFyODg4OSIsImEiOiJja24wMmRiMXAwanM5Mm5vMzRiZGI1YTlyIn0.kESnCOqEIV5mDh8mj0ODGA');
+      map.featureLayer.setGeoJSON(geojson);
+      map.setView([10.1, 125.6], 6)
+    </script>
+  </body>
+</html>
